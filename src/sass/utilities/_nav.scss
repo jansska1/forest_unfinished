@@ -1,0 +1,241 @@
+@use 'colors' as *;
+
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: $white;
+	// box-shadow: 0 2px 16px hsla(220, 32%, 8%, 0.3);
+	z-index: 10;
+}
+
+.nav {
+    height: 5em;
+
+	&__container {
+		max-width: 1120px;
+		margin-inline: 1.5rem;
+	}
+
+    &__data {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+    }
+
+	&__logo {
+		display: inline-flex;
+		align-items: center;
+		column-gap: 0.25rem;
+		font-size: 1.6rem;
+		color: rgb(75, 75, 75);
+		&--text {
+			font-size: 1.6rem;
+			color: $black;
+		}
+	}
+
+	&__toggle {
+		position: relative;
+		width: 32px;
+		height: 32px;
+	}
+
+	&__burger,
+	&__close {
+		position: absolute;
+		width: max-content;
+		height: max-content;
+		margin: auto;
+		inset: 0;
+		color: $white;
+		font-size: 1.25rem;
+		cursor: pointer;
+		transition: opacity 0.1s, transform 0.4s;
+	}
+
+	&__close {
+		opacity: 0;
+	}
+
+    &__link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.25em 1.5em;
+        color: $black;
+        font-weight: 400;
+        transition: background-color .3s;
+
+        &--white {
+            color: $white;
+            background-color: $black;
+        }
+
+        &:hover {
+            background-color: $gray;
+        }
+    }
+
+      &__show-icon &__burger {
+        opacity: 0;
+        transform: rotate(90deg);
+      }
+      &__show-icon &__close {
+        opacity: 1;
+        transform: rotate(90deg);
+      }
+
+    //   DROPDOWN 
+
+    &__dropdown-item {
+        cursor: pointer;
+    }
+
+    &__dropdown-arrow {
+        font-size: 1.25rem;
+        font-weight: initial;
+        transition: transform .4s;
+    }
+
+    &__dropdown-link {
+        display: flex;
+        align-items: center;
+        column-gap: .5em;
+        padding: 1.25em 1.25em 1.25em 2.5em;
+        color: $white;
+        background-color: $gray;
+        font-weight: 300;
+        transition: background-color .3s;
+        &:hover{
+            background-color: $black;
+        }
+    }
+
+    &__dropdown-link i {
+        font-size: 1.25rem;
+        font-weight: initial;
+    }
+
+    &__dropdown-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .4s easy-out;
+    }
+
+    &__showDropdown {
+        max-height: 1000px;
+        color: $black;
+        transition: max-height .4s ease-in;
+    }
+
+    &__dropdown-arrowR {
+        transform: rotate(180deg);
+    }
+}
+    
+@media screen and (min-width: 1118px) {
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        height: 5em;
+
+        &__container {
+            margin-inline: auto;
+        }
+
+        &__toggle {
+            display: none;
+        }
+        &__list {
+            height: 100%;
+            display: flex;
+        }
+        &__link {
+            justify-content: initial;
+            height: 100%;
+            padding: .5em 1.5em;
+            column-gap: 0.25em;
+            &:hover{
+                background-color: transparent;
+            }
+
+            &--white {
+                &:hover {
+                    color: black;
+                }
+            }
+        }
+
+        &__dropdown-item {
+            position: relative;
+        }
+
+        &__dropdown-menu {
+            max-height: initial;
+            overflow: initial;
+            position: absolute;
+            left: 0;
+            top: 6em;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s, top 0.3s;
+        }
+
+        &__dropdown-link {
+            padding-inline: 1em 3.5em;
+        }
+
+        &__dropdown-link {
+            padding-inline: 1em;
+        }
+
+        /* Show dropdown menu */
+        &__showDropdown {
+            opacity: 1;
+            top: 5em;
+            pointer-events: initial;
+            transition: top .3s;
+        }
+
+        &__item {
+            &--home {
+                color: $white;
+                background-color: $black;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1118px) {
+    .nav {
+        &__menu {
+            position: absolute;
+            left: 0;
+            top: 3.5em;
+            width: 100%;
+            height: calc(100vh - 3.5em);
+            overflow: auto;
+            pointer-events: none;
+            opacity: 0;
+            transition: top 0.4s, opacity 0.3s;
+        }
+    
+        &__menu::-webkit-scrollbar {
+            width: 0;
+        }
+
+        &__show-menu {
+            opacity: 1;
+            top: 3.5em;
+            pointer-events: initial;
+          }
+    
+        &__list {
+            background-color: hsl(220, 24%, 12%);
+            padding-top: 1em;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+@use 'colors' as *;
+
+.header-section {
+	&__img {
+		position: relative;
+		margin-top: 5em;
+		height: 48vh;
+		background-image: url('/img/jungle-big.jpg');
+		background-size: cover;
+		background-position: 50% 74%;
+		// background-color: red;
+		z-index: 0;
+	}
+
+	&__dark {
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		background-color: #0000009a;
+		z-index: 10;
+	}
+
+	&__textContainer {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		height: 100%;
+		color: $white;
+	}
+
+	&__h1 {
+		font-size: 2.3rem;
+	}
+
+	&__text {
+		font-size: 1.6rem;
+		font-weight: 300;
+	}
+}

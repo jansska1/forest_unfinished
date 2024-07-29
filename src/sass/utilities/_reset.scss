@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    font-family: 'system-ui', sans-serif;
+    // background-color: #3e3e3e;
+}
+
+@media (min-width: 1118px) {
+    .wrapper {
+		max-width: 1120px;
+		margin: auto;
+
+        &--header {
+            height: 100%;
+        }
+	}
+}
